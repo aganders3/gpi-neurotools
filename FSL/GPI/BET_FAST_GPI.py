@@ -18,7 +18,9 @@ class ExternalNode(gpi.NodeAPI):
         WIDGETS:
             res: resolution for each dimension of the input data
         OUTPUT:
-            out: moving image co-registered to align with in image
+            brain: a brain-only image, extracted using the FSL brain extraction
+                tool (BET)
+            seg: the segmented image labels
     """
 
     def initUI(self):

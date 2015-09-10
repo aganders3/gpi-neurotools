@@ -16,7 +16,7 @@ class ExternalNode(gpi.NodeAPI):
         INPUT:
             fixed: reference image or image volume
             moving: input image volume to be co-registered with reference 
-            ** input image volumes must be 2 or 3 dimensional
+                ** input image volumes must be 2 or 3 dimensional
         WIDGETS:
             res: resolution for each dimension of the input data
             interp: final interpolation mode

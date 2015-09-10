@@ -17,10 +17,11 @@ class ExternalNode(gpi.NodeAPI):
         * ECAT
         * Philips PAR/REC
     OUTPUT:
-        image - image data as N-D NumPy array
-        affine - affine matrix as 2-D NumPy array
+        image: image data as N-D NumPy array
+        affine: affine matrix as 2-D NumPy array
     WIDGETS:
-        input-file - path of the image file you would like to read 
+        input-file: path of the image file you would like to read
+        reverse-dims: transpose the image data upon reading it in
     """
 
     def initUI(self):
