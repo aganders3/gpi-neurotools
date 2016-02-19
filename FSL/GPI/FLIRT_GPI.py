@@ -1,5 +1,5 @@
 # Author: Ashley Anderson
-# Date: 2015-08-25 13:21 
+# Date: 2015-08-25 13:21
 
 import gpi
 import numpy as np
@@ -15,7 +15,7 @@ class ExternalNode(gpi.NodeAPI):
     """ A node for co-registering two volumes (same resolution and FOV).
         INPUT:
             fixed: reference image or image volume
-            moving: input image volume to be co-registered with reference 
+            moving: input image volume to be co-registered with reference
                 ** input image volumes must be 2 or 3 dimensional
         WIDGETS:
             res: resolution for each dimension of the input data
@@ -53,7 +53,7 @@ class ExternalNode(gpi.NodeAPI):
 
         self.addOutPort('out', 'NPYarray')
         self.addOutPort('T', 'NPYarray', ndim=2)
-        
+
     def validate(self):
         fixed = self.getData('fixed')
         moving = self.getData('moving')
@@ -68,10 +68,10 @@ class ExternalNode(gpi.NodeAPI):
 
         for ii in range(3):
             vis = -(ii-3) <= fixed.ndim
-            self.setAttr('res[{}]'.format(ii-3), visible=vis) 
+            self.setAttr('res[{}]'.format(ii-3), visible=vis)
 
         return 0
-        
+
     def compute(self):
         fixed = self.getData('fixed')
         moving = self.getData('moving')
@@ -120,8 +120,6 @@ class ExternalNode(gpi.NodeAPI):
 
             T = omat_.data()
 
-            [f.close() for f in (fixed_, moving_, out_, omat_)]
-
         # magnitude images have been registered
         # if the input is complex, apply the transformation to the real and
         # imaginary channels separately (this requires running FLIRT two more
@@ -151,9 +149,10 @@ class ExternalNode(gpi.NodeAPI):
                     out += 1j * out_.data()
 
                 [f.close() for f in (fixed_, moving_, out_, T_)]
-        # if the input is real, just use the output image from FLIRT
         else:
+            # if the input is real, just use the output image from FLIRT
             out = out_.data()
+            [f.close() for f in (fixed_, moving_, out_, omat_)]
 
         self.setData('out', out)
         self.setData('T', T)
