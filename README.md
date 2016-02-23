@@ -2,6 +2,8 @@
 
 This repository contains wrappers for working with popular neuroimaging tools (e.g. FSL) and reading/writing popular file formats (e.g. NIfTI) in [GPI](https://github.com/gpilab/framework).
 
+![BET brain extraction and FAST segmentation using the BET\_FAST node on the GPI canvas](BET_FAST.png "BET brain extraction and FAST segmentation")
+
 # Installation
 Follow the instructions in [this article](http://gpilab.com/2015/06/installing-node-libraries/) for installing new node libraries in GPI.
 
