@@ -47,9 +47,9 @@ class ExternalNode(gpi.NodeAPI):
 
         nibabel_image = nib.load(fname)
 
-        out_data = nibabel_image.get_data()
+        out_data = np.ascontiguousarray(nibabel_image.get_data())
         if self.getVal('reverse-dims'):
-            out_data = out_data.T
+            out_data = np.ascontiguousarray(out_data.T)
 
         self.setData('image', out_data)
         self.setData('affine', nibabel_image.affine)

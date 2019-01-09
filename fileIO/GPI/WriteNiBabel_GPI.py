@@ -31,7 +31,7 @@ class ExternalNode(gpi.NodeAPI):
         self.addWidget('SaveFileBrowser', 'output-file', button_title='Browse',
                        caption='Save File')
         self.addWidget('ComboBox', 'file-type',
-                       items=file_types.keys(), val='nifti1')
+                       items=list(file_types.keys()), val='nifti1')
         self.addWidget('PushButton', 'reverse-dims',
                        toggle=True, val=False, collapsed=True) 
 
